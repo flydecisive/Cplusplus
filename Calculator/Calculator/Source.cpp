@@ -1,5 +1,6 @@
 // Calculator version 1.0
 // Calculator version 1.1 Пока пользователь хочет пользоваться калькулятором, он будет работать непрерывно
+// Calculator version 1.2 Сделать так, чтобы консоль очищалась после запроса пользователю
 #include <iostream>
 #include <cmath>
 
@@ -9,12 +10,17 @@ int main() {
 	setlocale(LC_ALL, "Rus");
 	cout << "Добро пожаловать в мой калькулятор!" << endl;
 	cout << "В первой версии поддерживаются только целые числа!" << endl;
-	int fNum, sNum, question;
+	int fNum, sNum, question, questionCls;
 	char operation;
 	cout << "Хотите воспользоваться калькулятором? (1 - Д/ 0 - Н): ";
 	cin >> question;
 	if (question == 1) {
 		while (question == 1) {
+			cout << "Хотите очистить экран от предыдущих записей? (1 - Д/ 0 - Н): ";
+			cin >> questionCls;
+			if (questionCls == 1) {
+				system("cls");
+			}
 			cout << "Введите первое число: ";
 			cin >> fNum;
 			cout << "Введите второе число: ";
@@ -46,10 +52,10 @@ int main() {
 				cout << fNum % sNum;
 				break;
 			default:
-				cout << "Я еще не научился выполнять такие операции:(";
+				cout << endl << "Я еще не научился выполнять такие операции:(";
 				break;
 			}
-			cout << endl << "Хотите воспользоваться калькулятором? (1 - Д/ 0 - Н): ";
+			cout << endl << "Хотите воспользоваться калькулятором? (1 - Д / 0 - Н): ";
 			cin >> question;
 		}
 		cout << "Спасмбо за использование калькулятора! Приходите еще!";
