@@ -2,6 +2,7 @@
 // Calculator version 1.1 Пока пользователь хочет пользоваться калькулятором, он будет работать непрерывно
 // Calculator version 1.2 Сделать так, чтобы консоль очищалась после запроса пользователю
 // Calculator version 1.3 Добавить считывание строк
+// Calculator version 1.4 Добавить работу с double
 #include <iostream>
 #include <cmath>
 #include <string>
@@ -12,7 +13,7 @@ int main() {
 	setlocale(LC_ALL, "Rus");
 	cout << "Добро пожаловать в мой калькулятор!" << endl;
 	cout << "В первой версии поддерживаются только целые числа!" << endl;
-	int fNum, sNum;
+	double fNum, sNum;
 	char operation, question, questionCls;
 	cout << "Хотите воспользоваться калькулятором? (Y / N): ";
 	cin >> question;
@@ -34,7 +35,7 @@ int main() {
 				<< "\t" << "Вычитание: -" << "\n"
 				<< "\t" << "Умножение: *" << "\n"
 				<< "\t" << "Целочисленное деление: /" << "\n"
-				<< "\t" << "Взятие остатка: %" << "\n" << endl;
+				<< "\t" << "Взятие остатка: % (работает только с целыми числами)" << "\n" << endl;
 			cout << "Введите команду: ";
 			cin >> operation;
 			cout << fNum << " " << operation << " " << sNum << " = ";
@@ -52,7 +53,7 @@ int main() {
 				cout << fNum / sNum;
 				break;
 			case '%':
-				cout << fNum % sNum;
+				cout << (int)fNum % (int)sNum;
 				break;
 			default:
 				cout << endl << "Я еще не научился выполнять такие операции:(";
