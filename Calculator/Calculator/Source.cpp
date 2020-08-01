@@ -6,6 +6,7 @@
 // Calculator version 1.5 Расширить список команд (частично реализованно)
 // Calculator version 1.6 Добавить точность отображения на выбор пользователя (не реализованно)
 // Calculator version 1.7 Раскрашивать ответы в разные цвета (не реализовано)
+// Calculator version 1.8 Сделать инженерный режим с тригонометрическими функциями и числом пи (не реализованно)
 #include <iostream>
 #include <cmath>
 #include <string>
@@ -17,7 +18,7 @@ int main() {
 	setlocale(LC_ALL, "Rus");
 	cout << "Добро пожаловать в мой калькулятор!" << endl;
 	double fNum, sNum;
-	char operation, question, questionCls, questionSqrt;
+	char operation, question, questionCls, questionSqrt, questionAbs, questionRound, questionRoundNum;
 	cout << "Хотите воспользоваться калькулятором? (y / n): ";
 	cin >> question;
 	if (question == 'y') {
@@ -39,7 +40,9 @@ int main() {
 				<< "\t" << "Целочисленное деление: /" << "\n"
 				<< "\t" << "Взятие остатка: % (работает только с целыми числами)" << "\n" 
 				<< "\t" << "Возведение в степень: p" << "\n"
-				<< "\t" << "Квадратный корень: s" << endl << endl;
+				<< "\t" << "Квадратный корень: s" << "\n"
+				<< "\t" << "Модуль числа: a" << "\n"
+				<< "\t" << "Округление: r" << endl << endl;
 			cout << "Введите команду: ";
 			cin >> operation;
 			cout << setprecision(3) << fixed;
@@ -72,6 +75,67 @@ int main() {
 					cout << "Корень из " << sNum << " = " << sqrt(sNum);;
 				}
 				break;
+			case 'a':
+				cout << "Для какого числа будем считать модуль? (1 / 2): ";
+				cin >> questionAbs;
+				if (questionAbs == '1') {
+					cout << "Модуль " << fNum << " = " << abs(fNum);
+				}
+				else {
+					cout << "Модуль " << sNum << " = " << abs(sNum);
+				}
+				break;
+			case 'r':
+				cout << endl;
+				cout << "Команды для округления:" << "\n"
+					<< "Отбросить дробную часть: t" << "\n"
+					<< "Округлить в меньшую сторону: f" << "\n"
+					<< "Округлить в большую сторону: c" << "\n"
+					<< "Окрушлить по математическим правилам: r" << endl << endl;
+				cout << endl;
+				cout << "Какое число будем округлять? (1 / 2): ";
+				cin >> questionRoundNum;
+				cout << endl;
+				cout << "Выбирите команду для округления: ";
+				cin >> questionRound;
+				cout << endl;
+				if (questionRoundNum == '1') {
+					if (questionRound == 't') {
+						cout << "Число " << fNum << " без дробной части = " << trunc(fNum);
+						break;
+					}
+					else if (questionRound == 'f') {
+						cout << "Число " << fNum << " округленное в меньшую сторону = " << floor(fNum);
+						break;
+					}
+					else if (questionRound == 'c') {
+						cout << "Число " << fNum << " округленное в большую сторону = " << ceil(fNum);
+						break;
+					}
+					else if (questionRound == 'r') {
+						cout << "Число " << fNum << " округленное по математическим правилам = " << round(fNum);
+						break;
+					}
+				}
+				else {
+					if (questionRound == 't') {
+						cout << "Число " << sNum << " без дробной части = " << trunc(sNum);
+						break;
+					}
+					else if (questionRound == 'f') {
+						cout << "Число " << sNum << " округленное в меньшую сторону = " << floor(sNum);
+						break;
+					}
+					else if (questionRound == 'c') {
+						cout << "Число " << sNum << " округленное в большую сторону = " << ceil(sNum);
+						break;
+					}
+					else if (questionRound == 'r') {
+						cout << "Число " << sNum << " округленное по математическим правилам = " << round(sNum);
+						break;
+					}
+				}
+				
 			default:
 				cout << endl << "Я еще не научился выполнять такие операции:(";
 				break;
