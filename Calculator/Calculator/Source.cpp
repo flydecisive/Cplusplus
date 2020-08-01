@@ -3,7 +3,7 @@
 // Calculator version 1.2 Сделать так, чтобы консоль очищалась после запроса пользователю
 // Calculator version 1.3 Добавить считывание строк
 // Calculator version 1.4 Добавить работу с double
-// Calculator version 1.5 Расширить список команд (частично реализованно)
+// Calculator version 1.5 Расширить список команд
 // Calculator version 1.6 Добавить точность отображения на выбор пользователя (не реализованно)
 // Calculator version 1.7 Раскрашивать ответы в разные цвета (не реализовано)
 // Calculator version 1.8 Сделать инженерный режим с тригонометрическими функциями и числом пи (не реализованно)
@@ -17,10 +17,12 @@ using namespace std;
 int main() {
 	setlocale(LC_ALL, "Rus");
 	cout << "Добро пожаловать в мой калькулятор!" << endl;
-	double fNum, sNum;
+	double fNum, sNum, acc;
 	char operation, question, questionCls, questionSqrt, questionAbs, questionRound, questionRoundNum;
 	cout << "Хотите воспользоваться калькулятором? (y / n): ";
 	cin >> question;
+	cout << "Выбирите точность отображения чисел после запятой: ";
+	cin >> acc;
 	if (question == 'y') {
 		while (question == 'y') {
 			cout << "Хотите очистить экран от предыдущих записей? (y / n):  ";
@@ -45,7 +47,7 @@ int main() {
 				<< "\t" << "Округление: r" << endl << endl;
 			cout << "Введите команду: ";
 			cin >> operation;
-			cout << setprecision(3) << fixed;
+			cout << setprecision(acc) << fixed;
 			switch (operation) {
 			case '+':
 				cout << fNum << " " << operation << " " << sNum << " = " << fNum + sNum;
@@ -57,6 +59,15 @@ int main() {
 				cout << fNum << " " << operation << " " << sNum << " = " << fNum * sNum;
 				break;
 			case '/':
+				if (sNum == 0) {
+					cout << "Деление на 0 невозможно! Попробуйте ввести число еще раз." << endl;
+					cout << "Введите второе число: ";
+					cin >> sNum;
+					if (sNum == 0) {
+						cout << "Вы не справились, попробуйте сначала" << endl;
+						break;
+					}
+				}
 				cout << fNum << " " << operation << " " << sNum << " = " << fNum / sNum;
 				break;
 			case '%':
@@ -143,7 +154,7 @@ int main() {
 			cout << endl << "Хотите воспользоваться калькулятором? (y / n): ";
 			cin >> question;
 		}
-		cout << "Спасмбо за использование калькулятора! Приходите еще!";
+		cout << endl << "Спасибо за использование калькулятора! Приходите еще!" << endl;
 	}
 	else {
 		cout << "Спасибо, что зашли!";
