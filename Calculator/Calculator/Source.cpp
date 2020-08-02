@@ -24,7 +24,7 @@ int main() {
 	char operation, question, questionCls, questionSqrt, questionAbs, questionRound, questionRoundNum;
 	cout << "\033[33mХотите воспользоваться калькулятором? (y / n): \033[0m";
 	cin >> question;
-	cout << "Выбирите режим: (1 - Обычный | 2 - Инжинерный) \t";
+	cout << "\033[32mВыбирите режим: (1 - Обычный | 2 - Инжинерный) \033[0m\t";
 	cin >> questionMod;
 	if (questionMod == 1) {
 		if (question == 'y') {
