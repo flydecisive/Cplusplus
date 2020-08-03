@@ -20,8 +20,10 @@ using namespace std;
 int main() {
 	setlocale(LC_ALL, "Rus");
 	cout << "\t\t\t\t\t"<< "\033[33mДобро пожаловать в мой калькулятор!\033[0m" << endl << endl;
-	double fNum, sNum, acc, questionMod;
-	char operation, question, questionCls, questionSqrt, questionAbs, questionRound, questionRoundNum;
+	double fNum, sNum, acc, questionMod, piNum = atan(1) * 4;
+	char question, questionCls, questionSqrt, questionAbs, questionRound, questionRoundNum, questionCub, questionL, 
+		questionLg, questionSin, questionCos, questionTan;
+	string operation;
 	cout << "\033[33mХотите воспользоваться калькулятором? (y / n): \033[0m";
 	cin >> question;
 	cout << "\033[32mВыбирите режим: (1 - Обычный | 2 - Инжинерный) \033[0m\t";
@@ -63,14 +65,14 @@ int main() {
 					<< "\t" << "Квадратный корень: s" << "\n"
 					<< "\t" << "Модуль числа: a" << "\n"
 					<< "\t" << "Округление: r" << "\n"
-					<< "\t" << "Число Пи: pi" << "\n" // Реализовать все ф-ции начиная от сюда
-					<< "\t" << "Кубический корень: c" << "\n"
-					<< "\t" << "Натуральный логарифм: l" << "\n"
-					<< "\t" << "Десятичный логарифм: lg" << "\n"
-					<< "\t" << "Синус (рад): sin" << "\n"
-					<< "\t" << "Косинус (рад): cos" << "\n"
+					<< "\t" << "Число Пи: pi" << "\n" 
+					<< "\t" << "Кубический корень: c" << "\n" 
+					<< "\t" << "Натуральный логарифм: l" << "\n" 
+					<< "\t" << "Десятичный логарифм: lg" << "\n"  
+					<< "\t" << "Синус (рад): sin" << "\n"   
+					<< "\t" << "Косинус (рад): cos" << "\n"  
 					<< "\t" << "Тангенс (рад): tan" << "\n"
-					<< "\t" << "Арксинус (рад): asin" << "\n"
+					<< "\t" << "Арксинус (рад): asin" << "\n"  // Реализовать все ф-ции начиная от сюда
 					<< "\t" << "Арккосинус (рад): acos" << "\n"
 					<< "\t" << "Арктангенс (рад): atan" << "\n" << "\033[0m" << endl << endl;
 			}
@@ -78,35 +80,34 @@ int main() {
 			cout << "Введите команду: ";
 			cin >> operation;
 			cout << setprecision(acc) << fixed;
-			switch (operation) {
-			case '+':
+			if (operation == "+") {
 				cout << fNum << " " << operation << " " << sNum << " = " << fNum + sNum;
-				break;
-			case '-':
+			}
+			else if (operation == "-") {
 				cout << fNum << " " << operation << " " << sNum << " = " << fNum - sNum;
-				break;
-			case '*':
+			}
+			else if (operation == "*") {
 				cout << fNum << " " << operation << " " << sNum << " = " << fNum * sNum;
-				break;
-			case '/':
+			} 
+			else if (operation == "/") {
 				if (sNum == 0) {
 					cout << "Деление на 0 невозможно! Попробуйте ввести число еще раз." << endl;
 					cout << "Введите второе число: ";
 					cin >> sNum;
 					if (sNum == 0) {
 						cout << "Вы не справились, попробуйте сначала" << endl;
-						break;
+						continue;
 					}
 				}
 				cout << fNum << " " << operation << " " << sNum << " = " << fNum / sNum;
-				break;
-			case '%':
+			}
+			else if (operation == "%") {
 				cout << fNum << " " << operation << " " << sNum << " = " << (int)fNum % (int)sNum;
-				break;
-			case 'p':
+			}
+			else if (operation == "p") {
 				cout << fNum << " " << " ** " << " " << sNum << " = " << pow(fNum, sNum);
-				break;
-			case 's':
+			}
+			else if (operation == "s") {
 				cout << "Для какого числа будем считать корень? (1 / 2): ";
 				cin >> questionSqrt;
 				if (questionSqrt == '1') {
@@ -115,8 +116,8 @@ int main() {
 				else {
 					cout << "Корень из " << sNum << " = " << sqrt(sNum);;
 				}
-				break;
-			case 'a':
+			}
+			else if (operation == "a") {
 				cout << "Для какого числа будем считать модуль? (1 / 2): ";
 				cin >> questionAbs;
 				if (questionAbs == '1') {
@@ -125,8 +126,8 @@ int main() {
 				else {
 					cout << "Модуль " << sNum << " = " << abs(sNum);
 				}
-				break;
-			case 'r':
+			}
+			else if (operation == "r") {
 				cout << endl;
 				cout << "\033[34mКоманды для округления:" << "\n"
 					<< "Отбросить дробную часть: t" << "\n"
@@ -143,43 +144,97 @@ int main() {
 				if (questionRoundNum == '1') {
 					if (questionRound == 't') {
 						cout << "Число " << fNum << " без дробной части = " << trunc(fNum);
-						break;
 					}
 					else if (questionRound == 'f') {
 						cout << "Число " << fNum << " округленное в меньшую сторону = " << floor(fNum);
-						break;
 					}
 					else if (questionRound == 'c') {
 						cout << "Число " << fNum << " округленное в большую сторону = " << ceil(fNum);
-						break;
 					}
 					else if (questionRound == 'r') {
 						cout << "Число " << fNum << " округленное по математическим правилам = " << round(fNum);
-						break;
 					}
 				}
 				else {
 					if (questionRound == 't') {
 						cout << "Число " << sNum << " без дробной части = " << trunc(sNum);
-						break;
 					}
 					else if (questionRound == 'f') {
 						cout << "Число " << sNum << " округленное в меньшую сторону = " << floor(sNum);
-						break;
 					}
 					else if (questionRound == 'c') {
 						cout << "Число " << sNum << " округленное в большую сторону = " << ceil(sNum);
-						break;
 					}
 					else if (questionRound == 'r') {
 						cout << "Число " << sNum << " округленное по математическим правилам = " << round(sNum);
-						break;
 					}
 				}
-
-			default:
+			}
+			else if (operation == "pi") {
+				cout << "Число Пи = " << piNum;
+			}
+			else if (operation == "c") {
+				cout << "Из какого числа будем брать квадратный корень? (1 / 2): ";
+				cin >> questionCub;
+				if (questionCub == '1') {
+					cout << "Кубический корень из числа " << fNum << " = " << cbrt(fNum);
+				}
+				else if (questionCub == '2') {
+					cout << "Кубический корень из числа " << sNum << " = " << cbrt(sNum);
+				}
+			}
+			else if (operation == "l") {
+				cout << "Из какого числа будем брать натуральный логарифм? (1 / 2): ";
+				cin >> questionL;
+				if (questionL == '1') {
+					cout << "Натуральный логрифм " << fNum << " = " << log(fNum); 
+				}
+				else if (questionL == '2') {
+					cout << "Натуральный логрифм " << sNum << " = " << log(sNum);
+				}
+			}
+			else if (operation == "lg") {
+				cout << "Из какого числа будем брать десятичный логарифм? (1 / 2): ";
+				cin >> questionLg;
+				if (questionLg == '1') {
+					cout << "Десятичный логарифм из числа " << fNum << " = " << log10(fNum);
+				}
+				else if (questionLg == '2') {
+					cout << "Десятичный логарифм из числа " << sNum << " = " << log10(sNum);
+				}
+			}
+			else if (operation == "sin") {
+				cout << "Для какого числа будем считать синус? (1 / 2): ";
+				cin >> questionSin;
+				if (questionSin == '1') {
+					cout << "Синус числа " << fNum << " = " << sin(fNum);
+				}
+				else if (questionSin == '2') {
+					cout << "Синус числа " << sNum << " = " << sin(sNum);
+				}
+			}
+			else if (operation == "cos") {
+				cout << "Для какого числа будем считать косинус? (1 / 2): ";
+				cin >> questionCos;
+				if (questionCos == '1') {
+					cout << "Косинус числа " << fNum << " = " << cos(fNum);
+				}
+				else if (questionCos == '2') {
+					cout << "Косинус числа " << sNum << " = " << cos(sNum);
+				}
+			}
+			else if (operation == "tan") {
+				cout << "Для какого числа будем считать тангенс? (1 / 2): ";
+				cin >> questionTan;
+				if (questionTan == '1') {
+					cout << "Тангенс числа " << fNum << " = " << tan(fNum);
+				}
+				else if (questionTan == '2') {
+					cout << "Тангенс числа " << sNum << " = " << tan(sNum);
+				}
+			}
+			else {
 				cout << endl << "Я еще не научился выполнять такие операции:(";
-				break;
 			}
 			cout << endl << endl << "\033[33mХотите воспользоваться калькулятором? (y / n): \033[0m";
 			cin >> question;
