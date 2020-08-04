@@ -6,7 +6,7 @@
 // Calculator version 1.5 Расширить список команд
 // Calculator version 1.6 Добавить точность отображения на выбор пользователя
 // Calculator version 1.7 Раскрашивать ответы в разные цвета
-// Calculator version 1.8 Сделать инженерный режим с тригонометрическими функциями и числом пи (не реализованно)
+// Calculator version 1.8 Сделать инженерный режим с тригонометрическими функциями и числом пи
 // Calculator version 1.9 Отрисовать рамку из решоток вокруг приветствия голубым цветом (не реализовано)
 #include <iostream>
 #include <cmath>
@@ -22,7 +22,7 @@ int main() {
 	cout << "\t\t\t\t\t"<< "\033[33mДобро пожаловать в мой калькулятор!\033[0m" << endl << endl;
 	double fNum, sNum, acc, questionMod, piNum = atan(1) * 4;
 	char question, questionCls, questionSqrt, questionAbs, questionRound, questionRoundNum, questionCub, questionL, 
-		questionLg, questionSin, questionCos, questionTan;
+		questionLg, questionSin, questionCos, questionTan, questionAsin, questionAcos, questionAtan;
 	string operation;
 	cout << "\033[33mХотите воспользоваться калькулятором? (y / n): \033[0m";
 	cin >> question;
@@ -72,7 +72,7 @@ int main() {
 					<< "\t" << "Синус (рад): sin" << "\n"   
 					<< "\t" << "Косинус (рад): cos" << "\n"  
 					<< "\t" << "Тангенс (рад): tan" << "\n"
-					<< "\t" << "Арксинус (рад): asin" << "\n"  // Реализовать все ф-ции начиная от сюда
+					<< "\t" << "Арксинус (рад): asin" << "\n" 
 					<< "\t" << "Арккосинус (рад): acos" << "\n"
 					<< "\t" << "Арктангенс (рад): atan" << "\n" << "\033[0m" << endl << endl;
 			}
@@ -231,6 +231,36 @@ int main() {
 				}
 				else if (questionTan == '2') {
 					cout << "Тангенс числа " << sNum << " = " << tan(sNum);
+				}
+			}
+			else if (operation == "asin") {
+				cout << "Для какого числа будем считать синус? (1 / 2): ";
+				cin >> questionAsin;
+				if (questionAsin == '1') {
+					cout << "Арксинус числа " << fNum << " = " << asin(fNum);
+				}
+				else if (questionAsin == '2') {
+					cout << "Арксинус числа " << sNum << " = " << asin(sNum);
+				}
+			}
+			else if (operation == "acos") {
+				cout << "Для какого числа будем считать арккосинус? (1 / 2): ";
+				cin >> questionAcos;
+				if (questionAcos == '1') {
+					cout << "Арккосинус числа " << fNum << " = " << acos(fNum);
+				}
+				else if (questionAcos == '2') {
+					cout << "Арккосинус числа " << sNum << " = " << acos(sNum);
+				}
+			}
+			else if (operation == "atan") {
+				cout << "Для какого числа будем считать арктангенс? (1 / 2): ";
+				cin >> questionAtan;
+				if (questionAtan == '1') {
+					cout << "Арктангенс числа " << fNum << " = " << atan(fNum);
+				}
+				else if (questionAtan == '2') {
+					cout << "Арктангенс числа " << sNum << " = " << atan(sNum);
 				}
 			}
 			else {
