@@ -7,7 +7,7 @@
 // Calculator version 1.6 Добавить точность отображения на выбор пользователя
 // Calculator version 1.7 Раскрашивать ответы в разные цвета
 // Calculator version 1.8 Сделать инженерный режим с тригонометрическими функциями и числом пи
-// Calculator version 1.9 Отрисовать рамку из решоток вокруг приветствия голубым цветом (не реализовано)
+// Calculator version 1.9 Отрисовать рамку из решоток вокруг приветствия голубым цветом
 #include <iostream>
 #include <cmath>
 #include <string>
@@ -19,15 +19,19 @@ using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "Rus");
-	cout << "\t\t\t\t\t"<< "\033[33mДобро пожаловать в мой калькулятор!\033[0m" << endl << endl;
+	cout << "\t\t\t\t\x1b[36m  ###############################################\x1b[0m\n";
+	cout << "\t\t\t\t\x1b[36m  #                                             #\x1b[0m\n";
+	cout << "\t\t\t\t  \x1b[36m#\x1b[0m\t"<< "\033[33mДобро пожаловать в мой калькулятор!\033[0m" << "\t\x1b[36m#\x1b[0m" << endl;
+	cout << "\t\t\t\t\x1b[36m  #                                             #\x1b[0m\n";
+	cout << "\t\t\t\t\x1b[36m  ###############################################\x1b[0m\n\n";
 	double fNum, sNum, acc, questionMod, piNum = atan(1) * 4, num;
 	char question, questionCls, questionRound;
 	string operation;
 	cout << "\033[33mХотите воспользоваться калькулятором? (y / n): \033[0m";
 	cin >> question;
-	cout << "\033[32mВыбирите режим: (1 - Обычный | 2 - Инжинерный) \033[0m\t";
-	cin >> questionMod;
 	if (question == 'y') {
+		cout << "\033[32mВыбирите режим: (1 - Обычный | 2 - Инженерный) \033[0m\t";
+		cin >> questionMod;
 		cout << "Выбирите точность отображения чисел после запятой: ";
 		cin >> acc;
 		while (question == 'y') {
@@ -184,7 +188,7 @@ int main() {
 		cout << endl << "\033[32mСпасибо за использование калькулятора! Приходите еще!\033[0m" << endl;
 	}
 	else {
-		cout << "\033[32mСпасибо, что зашли!\033[32m";
+		cout << "\n\033[32mСпасибо, что зашли!\033[32m";
 	}
 return 0;
 }
