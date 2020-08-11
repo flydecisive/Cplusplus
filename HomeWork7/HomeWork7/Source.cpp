@@ -18,6 +18,7 @@ int main() {
 		for (int j = 0; j < i; j++) {
 			if (arr[j] == rnd) {
 				already = true;
+				break;
 			}
 		}
 		if (!already) {
